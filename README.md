@@ -24,7 +24,7 @@ To use the global exception handler, import and set it as the default exception 
 ```python
 import logging
 import sys
-from global_exception_handler import global_exception_handler
+from global_exception_handler_func import global_exception_handler
 
 # Set up logging
 logging.basicConfig(filename='error.log', level=logging.ERROR)
@@ -53,10 +53,8 @@ raise ValueError("This is a test error")
 
 #### Example:
 ```python
-import logging
 
-logger = logging.getLogger("error_logger")
-logger.setLevel(logging.ERROR)
+from global_exception_handler_func import *
 
 try:
     1 / 0  # Example error
