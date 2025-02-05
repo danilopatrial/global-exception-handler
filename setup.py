@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as f:
 
 setup(
     name='global_exception_handler_func',
-    version='1.1',
+    version='1.3',
     packages=find_packages(),
     long_description=long_description,
     long_description_content_type="text/markdown"

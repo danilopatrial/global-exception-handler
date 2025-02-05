@@ -65,16 +65,15 @@ def global_exception_handler(
         file_name: str = '<unkown file>'
         line_number: int = -1
 
-    base_folder = os.path.dirname(os.path.abspath(__file__))
-    relative_path = os.path.relpath(os.path.abspath(file_name), start=os.path.abspath(base_folder))
-    relative_path = relative_path.strip('./')
+    relative_path = file_name.split('/')[-1]
 
     exception_summary: str = (
         "\033[1;31mAn unexpected error occurred: {} at {}: {}. Check the log file for details.\033[0m"
     ).format(exc_type.__name__, relative_path, line_number)
 
+    logger.exception("Uncaught exception", exc_info=(exc_type, exc_value, exc_traceback))
+
     if system_cls:
         os.system('cls')
 
-    logger.exception("Uncaught exception", exc_info=(exc_type, exc_value, exc_traceback))
     file.write(exception_summary + "\n")
